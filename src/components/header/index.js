@@ -3,10 +3,10 @@ import './styles.scss'
 
 function Header() {
     return (
-       <header>
+       <header data-test="headerComponent">
            <div className="wrap">
                <div className="logo">
-                   <h1 className="logo-text">LOGO</h1>
+                   <h1 className="logo-text" data-test="logo">LOGO</h1>
                </div>
            </div>
        </header>
