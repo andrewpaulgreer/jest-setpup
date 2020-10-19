@@ -1,7 +1,8 @@
 import React from 'react'
 import {shallow} from 'enzyme'
 import Headline from './index'
-import { findByTestAtrr } from '../../../utils'
+import { findByTestAtrr, checkProps } from '../../../utils'
+
 
 const setUp = (props={})=> {
     //using spread operator to map through props
@@ -10,6 +11,26 @@ const setUp = (props={})=> {
 }
 
 describe('headline Component', ()=> {
+describe('Checking Prop Types', ()=>{
+    it('should not throw warning', ()=> {
+        const expectedProps = {
+            header: 'Test Header',
+            desc: 'Test Desc',
+            tempArr: [{
+                fName: "testfname",
+                lName: 'testlName',
+                email: 'test email',
+                age: 74,
+                onlineStatus: false
+            }]
+        }
+        // everything we need to pass into checkPropTypes to make sure we are testing correctly
+        //brought in check props from util
+       const propsErr = checkProps(Headline, expectedProps)
+       expect(propsErr).toBeUndefined()
+    })
+})
+
     
     describe('Have props', ()=> {
         let wrapper;
