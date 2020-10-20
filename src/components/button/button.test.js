@@ -8,6 +8,7 @@ describe( 'SharedButton Component', ()=>{
         it ('should NOT throw a warning', ()=> {
             const expectedProps = {
                 buttonText: 'Example button text',
+                //simulating an event with enzyme
                 emitEvent: ()=> {
 
                 }
@@ -19,13 +20,14 @@ describe( 'SharedButton Component', ()=>{
 })
 
 describe('renders', ()=> {
+    
     let wrapper;
+    let mockFunc;
     beforeEach(()=> {
+        mockFunc = jest.fn()
         const props = {
             buttonText: 'Example button text',
-            emitEvent: ()=> {
-
-                }
+            emitEvent: mockFunc
         }
         wrapper = shallow(<SharedButton {...props}/>)
     })
@@ -33,5 +35,13 @@ describe('renders', ()=> {
         const button = findByTestAtrr(wrapper, 'buttonComponent')
         //make assertion
         expect(button.length).toBe(1)
+    })
+// simulating click
+    it('should emit callback on click event', ()=> {
+        const button = findByTestAtrr(wrapper, 'buttonComponent')
+        button.simulate('click')
+        const callback = mockFunc.mock.calls.length
+        expect(callback).toBe(1)
+
     })
 })
