@@ -35,7 +35,7 @@ const configButton = {
 }
 
   return (
-    <div className="App">
+    <div className="App" data-test="appComponent">
       <Header />
       <section className="main">
         <Headline header="Post" desc="Click the Button to render posts" tempArr={tempArr}/>
