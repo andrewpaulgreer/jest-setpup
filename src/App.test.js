@@ -36,4 +36,20 @@ describe('App Component', ()=> {
         expect(component.length).toBe(1);
     })
 
+    //checking if state is updating via funciton we made in app
+    it ('exampleMethod_shouldUpdate Method should update state as expected', ()=> {
+        const classInstance = wrapper.instance();
+        classInstance.exampleMethod_updatesState();
+        const newState = classInstance.state.hideBtn;
+        expect(newState).toBe(true)
+    })
+
+    it ('exampleMethod_returnsValue should return value as expecter', ()=> {
+        const classInstance = wrapper.instance();
+        const newValue = classInstance.exampleMethod_returnsValue(6);
+        //should be 8 since we are addding 2 in funciton
+        expect(newValue).toBe(8)
+        
+    })
+
 })
